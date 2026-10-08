@@ -246,13 +246,13 @@ export default function StudentEnrollmentsPage() {
                           </DialogDescription>
                         </DialogHeader>
                         <div className="grid gap-1.5">
-                          <Label htmlFor="formCourse">วิชาใหม่</Label>
+                          <Label htmlFor="newCourseId">วิชาใหม่</Label>
                           <Select
                             items={courseOptions}
                             value={newCourseId}
                             onValueChange={(v) => setnewCourseId(v as string)}
                           >
-                            <SelectTrigger id="formCourse" className="w-full">
+                            <SelectTrigger id="newCourseId" className="w-full">
                               <SelectValue
                                 placeholder={
                                   courseOptions.length === 0
