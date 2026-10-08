@@ -188,17 +188,17 @@ router.put("/",authenticateToken, checkRoles, async (req:CustomRequest, res:Resp
   }
 
   if(courseId === newCourseId){
-    return res.status(409).json({
+    return res.status(400).json({
       success: false,
-      message: `${newCourseId} already conflict`
+      message: `${newCourseId} already exists`,
     })
   }
 
   const conflict_newCourse = student.find((n) => n.courseId === newCourseId);
   if(conflict_newCourse){
-    return res.status(400).json({
+    return res.status(409).json({
       success: false,
-      message: `${newCourseId} already exists`,
+      message: `${newCourseId} already conflict`,
     })
   }
   
