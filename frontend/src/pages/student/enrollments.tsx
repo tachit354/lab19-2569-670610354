@@ -266,7 +266,7 @@ export default function StudentEnrollmentsPage() {
                               />
                             </SelectTrigger>
                             <SelectContent>
-                              {course1.map((o) => (
+                              {courseOptions.map((o) => (
                                 <SelectItem key={o.value} value={o.value}>
                                   {o.label}
                                 </SelectItem>
