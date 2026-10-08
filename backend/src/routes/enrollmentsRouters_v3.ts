@@ -145,13 +145,13 @@ router.put("/",authenticateToken, checkRoles, async (req:CustomRequest, res:Resp
     if(user.studentId !== studentId){
       return res.status(403).json({
           success: false,
-          massege: "Forbidden access",
+          massage: "Forbidden access",
       })
     }
   }else if(user?.role != "ADMIN"){
       return res.status(403).json({
           success: false,
-          massege: "Forbidden access",
+          massage: "Forbidden access",
       })
   }
 
@@ -164,7 +164,7 @@ router.put("/",authenticateToken, checkRoles, async (req:CustomRequest, res:Resp
   if(student.length === 0){
     return res.status(404).json({
       success: false,
-      messege: `${studentId} hasn't registered for ${courseId}`,
+      message: `${studentId} hasn't registered for ${courseId}`,
     })
   }
 
@@ -172,7 +172,7 @@ router.put("/",authenticateToken, checkRoles, async (req:CustomRequest, res:Resp
   if(!coures){
     return res.status(404).json({
       success: false,
-      messege: `${courseId} hasn't been registered `,
+      message: `${courseId} hasn't been registered `,
     })
   }
 
@@ -183,22 +183,22 @@ router.put("/",authenticateToken, checkRoles, async (req:CustomRequest, res:Resp
   if(!newCourse){
     return res.status(404).json({
       success: false,
-      messege: `${newCourseId} not Founded`,
+      message: `${newCourseId} not Founded`,
     })
   }
 
   if(courseId === newCourseId){
-    return res.status(400).json({
+    return res.status(409).json({
       success: false,
-      messege: `${newCourseId} already exists`,
+      message: `${newCourseId} already conflict`
     })
   }
 
   const conflict_newCourse = student.find((n) => n.courseId === newCourseId);
   if(conflict_newCourse){
-    return res.status(409).json({
+    return res.status(400).json({
       success: false,
-      messege: `${newCourseId} already conflict`,
+      message: `${newCourseId} already exists`,
     })
   }
   
@@ -213,7 +213,7 @@ router.put("/",authenticateToken, checkRoles, async (req:CustomRequest, res:Resp
 
   return res.status(200).json({
     success:true,
-    messege: `update data ${newCourseId} success`,
+    message: `update data ${newCourseId} success`,
     data: updateEnrollment,
   })
 })
@@ -242,13 +242,13 @@ router.delete("/", authenticateToken, checkRoles, async (req:CustomRequest, res:
       if(user.studentId !== studentId){
         return res.status(403).json({
             success: false,
-            massege: "Forbidden access",
+            massage: "Forbidden access",
         })
       }
     }else if(user?.role != "ADMIN"){
       return res.status(403).json({
           success: false,
-          massege: "Forbidden access",
+          massage: "Forbidden access",
       })
     }
 

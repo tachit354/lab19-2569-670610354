@@ -226,13 +226,13 @@ router.put("/", authenticateToken, checkRoles, async (req:CustomRequest, res:Res
       if(user.studentId != result.data.studentId){
         return res.status(403).json({
           success: false,
-          massege: "Forbidden access",
+          massage: "Forbidden access",
         })
       }
     }else if(user?.role != "ADMIN"){
       return res.status(403).json({
           success: false,
-          massege: "Forbidden access",
+          massage: "Forbidden access",
       })
     }
 
@@ -243,7 +243,7 @@ router.put("/", authenticateToken, checkRoles, async (req:CustomRequest, res:Res
 
     return res.status(200).json({
       success: true,
-      messege: "update data student success",
+      message: "update data student success",
       data: updateStudent,
     })
 
@@ -279,7 +279,7 @@ router.delete("/",authenticateToken, checkRoleAdmin,async (req:CustomRequest, re
     if(!student){
       return res.status(404).json({
         success: false,
-        messege: `StudentId ${studentId} does not exists`,
+        message: `StudentId ${studentId} does not exists`,
       })
     }
 
@@ -290,7 +290,7 @@ router.delete("/",authenticateToken, checkRoleAdmin,async (req:CustomRequest, re
 
     return res.status(200).json({
       success: true,
-      messege: `StudentId ${studentId} has been deleted successfully`,
+      message: `StudentId ${studentId} has been deleted successfully`,
       data: deleted,
     })
 

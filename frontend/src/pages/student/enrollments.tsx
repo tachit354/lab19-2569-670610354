@@ -52,6 +52,10 @@ export default function StudentEnrollmentsPage() {
 
   const me = students.find((s) => s.studentId === studentId);
   const myEnrollments = enrollments.filter((e) => e.studentId === studentId);
+  // const course1 = courses.map((c) => ({
+  //   value: c.courseId,
+  //   label: `${c.courseId} — ${c.courseTitle}`,
+  // }));
 
   const courseOptions = courses
     .filter((c) => !myEnrollments.some((e) => e.courseId === c.courseId))
